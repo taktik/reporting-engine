@@ -138,7 +138,7 @@ class report_xls(report_sxw):
         self.generate_xls_report(_p, _xs, data, objs, wb)
         wb.save(n)
         n.seek(0)
-        return (n.read(), 'xls')
+        return (n.read(), 'xls', wb)
 
     def render(self, wanted, col_specs, rowtype, render_space='empty'):
         """

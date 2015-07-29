@@ -107,7 +107,10 @@ class report_xls(report_sxw):
         elif context.get('xls_export'):
             # use model from 'data' when no ir.actions.report.xml entry
             self.table = data.get('model') or self.table
-            return self.create_source_xls(cr, uid, ids, data, context)
+            res = self.create_source_xls(cr, uid, ids, data, context)
+            if len(res) == 3:
+                res = res[:2]
+            return res
         return super(report_xls, self).create(cr, uid, ids, data, context)
 
     def create_source_xls(self, cr, uid, ids, data, context=None):
